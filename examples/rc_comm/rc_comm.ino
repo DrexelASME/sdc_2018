@@ -7,8 +7,8 @@
 
 #define PULSEIN_TIMEOUT 100000 // 0.1 second timeout
 
-const int CH1 = 11;
-const int CH2 = 11;
+const int CH1 = 27;
+const int CH2 = 28;
 int CH1_OFFSET, CH2_OFFSET;
 
 void setup() {
@@ -32,7 +32,7 @@ void loop() {
 	int channel_2 = pulseIn(CH2, HIGH, PULSEIN_TIMEOUT);
 
 	Serial.print("CH1: ");
-	Serial.println(channel_1);
+	Serial.print(channel_1);
 	Serial.print(" | CH2: ");
 	Serial.println(channel_2);
 

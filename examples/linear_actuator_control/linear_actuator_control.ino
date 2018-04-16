@@ -7,18 +7,24 @@
  
 #include <Servo.h>
 
-#define LIN_ACT_MIN 45
-#define LIN_ACT_MAX 140
+#define LIN_ACT_MIN 1400
+#define LIN_ACT_MAX 1700
 
 Servo linear_actuator;
 
 void setup() {
-  linear_actuator.attach(3);
+  linear_actuator.attach(5);
 }
 
 void loop() {
-  linear_actuator.write(LIN_ACT_MIN);
-  delay(1000);
-  linear_actuator.write(LIN_ACT_MAX);
-  delay(1000);
+  for (int ppm = 1200; ppm < 1800; ppm++) {
+  	linear_actuator.writeMicroseconds(ppm);
+  	delay(10);
+  	Serial.println(ppm);
+  }
+  for (int ppm = 1800; ppm > 1200; ppm--) {
+  	linear_actuator.writeMicroseconds(ppm);
+  	delay(10);
+  	Serial.println(ppm);
+  }
 }
